@@ -479,7 +479,7 @@
                     LeituraBíblica365
                 </div>
                 <div class="header-cta">
-                    <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn btn-accent" target="_blank">Garantir Meu Cronograma</a>
+                    <a href="#" class="btn btn-accent" id="header-button">Garantir Meu Cronograma</a>
                 </div>
             </div>
         </div>
@@ -492,7 +492,7 @@
                 <div class="hero-text">
                     <h1>Leia a <span>Bíblia Completa em 1 Ano</span> com um Método Sequencial e Estruturado</h1>
                     <p>Finalmente complete sua jornada bíblica do Gênesis ao Apocalipse com nosso cronograma guia prático. Um PDF meticulosamente organizado que elimina a confusão e transforma sua leitura em uma experiência espiritual profunda e consistente.</p>
-                    <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn" target="_blank">Quero Meu Cronograma Agora</a>
+                    <a href="#" class="btn" id="hero-button">Quero Meu Cronograma Agora</a>
                     <div class="urgency-badge">
                         <i class="fas fa-clock"></i> Mais de 500 cópias vendidas
                     </div>
@@ -640,11 +640,9 @@
                 <div class="price-note">Menos de R$ 0,04 por dia de leitura guiada</div>
             </div>
             
-            <!-- ✅ LINK DA EDUZZ ADICIONADO AQUI -->
-            <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn btn-accent" id="kiwify-checkout" target="_blank">
+            <a href="#" class="btn btn-accent" id="main-button">
                 SIM, QUERO MEU CRONOGRAMA AGORA!
             </a>
-            <!-- ✅ FIM DA ALTERAÇÃO -->
             
             <div class="guarantee">
                 <i class="fas fa-shield-alt"></i>
@@ -671,6 +669,95 @@
     </footer>
 
     <script>
+        // ============================================
+        // SISTEMA DINÂMICO DE RASTREAMENTO DE AFILIADOS
+        // ============================================
+        
+        // Função para extrair parâmetros da URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        
+        // Configuração dos botões dinâmicos
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL base do checkout da Eduzz
+            var checkoutBaseUrl = 'https://chk.eduzz.com/Q9N5KE7B01';
+            
+            // Parâmetros a serem capturados (suporta ref, a, afiliado, etc.)
+            var affiliateParams = ['ref', 'a', 'afiliado', 'aff', 'source', 'utm_source', 'codigo', 'id'];
+            var affiliateValue = null;
+            
+            // Procura por qualquer parâmetro de afiliado na URL
+            for (var i = 0; i < affiliateParams.length; i++) {
+                var paramValue = getUrlParameter(affiliateParams[i]);
+                if (paramValue) {
+                    affiliateValue = paramValue;
+                    break; // Usa o primeiro parâmetro encontrado
+                }
+            }
+            
+            // Se encontrou um código de afiliado, adiciona ao link do checkout
+            var checkoutUrl = checkoutBaseUrl;
+            if (affiliateValue) {
+                // Formato que a Eduzz reconhece para afiliados
+                checkoutUrl = checkoutBaseUrl + '?a=' + encodeURIComponent(affiliateValue);
+                console.log('Afiliado detectado:', affiliateValue);
+                console.log('Checkout URL:', checkoutUrl);
+            }
+            
+            // Atualiza TODOS os botões de compra
+            var buyButtons = [
+                document.getElementById('header-button'),
+                document.getElementById('hero-button'),
+                document.getElementById('main-button')
+            ];
+            
+            buyButtons.forEach(function(button) {
+                if (button) {
+                    button.setAttribute('href', checkoutUrl);
+                    button.setAttribute('target', '_blank');
+                    button.setAttribute('data-affiliate', affiliateValue || 'direto');
+                    
+                    // Adiciona evento de clique para rastreamento adicional
+                    button.addEventListener('click', function() {
+                        console.log('Clique no botão - Afiliado:', affiliateValue || 'direto');
+                        
+                        // Pode adicionar Google Analytics ou Facebook Pixel aqui
+                        if (affiliateValue) {
+                            // Exemplo: gtag('event', 'conversion', {'affiliate': affiliateValue});
+                        }
+                    });
+                }
+            });
+            
+            // Salva o código do afiliado no sessionStorage para uso futuro
+            if (affiliateValue) {
+                sessionStorage.setItem('affiliate_code', affiliateValue);
+                sessionStorage.setItem('affiliate_timestamp', new Date().getTime());
+            }
+            
+            // Verifica se há código salvo anteriormente (para sessões)
+            var savedAffiliate = sessionStorage.getItem('affiliate_code');
+            if (savedAffiliate && !affiliateValue) {
+                console.log('Usando código de afiliado da sessão:', savedAffiliate);
+                affiliateValue = savedAffiliate;
+                
+                // Atualiza os botões com o código da sessão
+                buyButtons.forEach(function(button) {
+                    if (button) {
+                        var sessionCheckoutUrl = checkoutBaseUrl + '?a=' + encodeURIComponent(affiliateValue);
+                        button.setAttribute('href', sessionCheckoutUrl);
+                        button.setAttribute('data-affiliate', affiliateValue);
+                    }
+                });
+            }
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

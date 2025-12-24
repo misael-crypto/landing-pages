@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma Guia Prático - Leitura da Bíblia em 1 Ano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c62828;
+            --primary-dark: #8e0000;
+            --primary-light: #ff5f52;
+            --accent: #ffd700;
+            --accent-dark: #b29700;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+            --gray: #5a5a5a;
+            --gray-light: #e0e0e0;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(198, 40, 40, 0.15);
+            --shadow-heavy: 0 15px 40px rgba(198, 40, 40, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            z-index: 100;
+            transition: var(--transition);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(198, 40, 40, 0.05) 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+        
+        .pdf-mockup {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-heavy);
+            transition: var(--transition);
+        }
+        
+        .pdf-mockup:hover {
+            transform: translateY(-10px);
+        }
+        
+        .urgency-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        /* Methodology Section */
+        .methodology {
+            background-color: #f9f9f9;
+        }
+        
+        .methodology-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .methodology-image {
+            text-align: center;
+        }
+        
+        .methodology-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .methodology-list {
+            list-style: none;
+        }
+        
+        .methodology-list li {
+            margin-bottom: 25px;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .methodology-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .time-commitment {
+            background-color: var(--primary);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .time-commitment h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .time-commitment .time {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* Objections Section */
+        .objections {
+            background-color: white;
+        }
+        
+        .objections-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .objection-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .objection-item h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .price {
+            margin-bottom: 40px;
+        }
+        
+        .original-price {
+            font-size: 24px;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .current-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0 15px;
+        }
+        
+        .price-note {
+            font-size: 18px;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .guarantee {
+            margin-top: 40px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .guarantee i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: #999;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content, .objections-content, .methodology-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-text h1 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta h2 {
+                font-size: 36px;
+            }
+            
+            .current-price {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-bible"></i>
+                    LeituraBíblica365
+                </div>
+                <div class="header-cta">
+                    <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn btn-accent" target="_blank">Garantir Meu Cronograma</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Leia a <span>Bíblia Completa em 1 Ano</span> com um Método Sequencial e Estruturado</h1>
+                    <p>Finalmente complete sua jornada bíblica do Gênesis ao Apocalipse com nosso cronograma guia prático. Um PDF meticulosamente organizado que elimina a confusão e transforma sua leitura em uma experiência espiritual profunda e consistente.</p>
+                    <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn" target="_blank">Quero Meu Cronograma Agora</a>
+                    <div class="urgency-badge">
+                        <i class="fas fa-clock"></i> Mais de 500 cópias vendidas
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="PDF Cronograma Leitura Bíblia" class="pdf-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Você Vai Conseguir</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Cronograma Sequencial</h3>
+                    <p>Leia a Bíblia em ordem cronológica, do Gênesis ao Apocalipse, seguindo uma sequência lógica que facilita o entendimento do contexto histórico.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <h3>Tempo Realista</h3>
+                    <p>Leituras diárias de aproximadamente 35 minutos - tempo suficiente para uma imersão espiritual significativa mas que cabe na sua rotina.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Acompanhamento de Progresso</h3>
+                    <p>Marcadores visuais para acompanhar seu progresso e manter a motivação durante todo o ano, vendo claramente sua evolução.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Abordagem Completa</h3>
+                    <p>Não pule nenhum livro da Bíblia. Leia cada capítulo e versículo, garantindo uma compreensão integral das Escrituras Sagradas.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Disciplina Espiritual</h3>
+                    <p>Desenvolva o hábito diário de leitura bíblica que transformará sua vida espiritual e seu relacionamento com Deus.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Acesso Imediato e Vitalício</h3>
+                    <p>PDF otimizado para qualquer dispositivo. Baixe agora e tenha acesso para sempre - use quantas vezes quiser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="container">
+            <div class="section-title">
+                <h2>Metodologia Comprovada</h2>
+            </div>
+            <div class="methodology-content">
+                <div class="methodology-text">
+                    <h3>Por que nosso método sequencial funciona melhor?</h3>
+                    <p>Diferente de planos que misturam leituras desconexas, nosso cronograma segue uma ordem lógica que permite:</p>
+                    
+                    <ul class="methodology-list">
+                        <li><strong>Compreensão do contexto histórico</strong> - Entenda a história da salvação de forma linear</li>
+                        <li><strong>Conectar os pontos</strong> - Veja como cada livro se relaciona com os próximos</li>
+                        <li><strong>Evitar confusão</strong> - Não pule entre testamento antigo e novo desnecessariamente</li>
+                        <li><strong>Imersão profunda</strong> - Mantenha o foco em uma narrativa contínua</li>
+                        <li><strong>Consistência</strong> - Desenvolva um hábito sólido com um plano claro</li>
+                    </ul>
+                    
+                    <div class="time-commitment">
+                        <h3>Tempo Diário Recomendado</h3>
+                        <span class="time">35 minutos</span>
+                        <p>Tempo suficiente para uma leitura contemplativa e reflexiva, permitindo que a Palavra realmente entre no seu coração.</p>
+                    </div>
+                </div>
+                <div class="methodology-image">
+                    <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Leitura da Bíblia">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objections Section -->
+    <section class="objections">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quebrando Objeções</h2>
+            </div>
+            <div class="objections-content">
+                <div class="objections-text">
+                    <div class="objection-item">
+                        <h3>"35 minutos é muito tempo"</h3>
+                        <p>É menos que um episódio de série na Netflix! E o retorno é eterno. Separe esse tempo sagrado para Deus - Ele merece mais que isso.</p>
+                    </div>
+                    <div class="objection-item">
+                        <h3>"Já tentei e desisti no meio"</h3>
+                        <p>Com nosso cronograma visual e acompanhamento claro, você verá seu progresso diariamente. A sensação de avançar capítulo a capítulo é motivadora!</p>
+                    </div>
+                    <div class="objection-item">
+                        <h3>"Leitura sequencial é monótona"</h3>
+                        <p>Pelo contrário! Seguir a história da salvação de forma linear é uma experiência emocionante. É como ler um grande épico divino.</p>
+                    </div>
+                </div>
+                <div class="objections-text">
+                    <div class="objection-item">
+                        <h3>"Posso criar meu próprio plano"</h3>
+                        <p>Pode, mas vai gastar horas planejando. Nós já fizemos o trabalho pesado por você. Por apenas R$ 12,90, você ganha um plano testado e aprovado.</p>
+                    </div>
+                    <div class="objection-item">
+                        <h3>"É só um PDF, não vale o preço"</h3>
+                        <p>Vale cada centavo! Um café gourmet custa mais que isso. Este guia pode transformar sua vida espiritual - isso não tem preço.</p>
+                    </div>
+                    <div class="objection-item">
+                        <h3>"E se eu não gostar?"</h3>
+                        <p>Temos garantia de 7 dias. Se não gostar, devolvemos seu dinheiro. Você não tem nada a perder e uma vida espiritual transformada a ganhar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Transforme Sua Vida Espiritual em 2024</h2>
+            <p>Adquira agora o Cronograma Guia Prático para Leitura Completa da Bíblia em 1 Ano e comece sua jornada de transformação espiritual hoje mesmo.</p>
+            
+            <div class="price">
+                <span class="current-price">R$ 12,90</span>
+                <div class="price-note">Apenas uma vez - acesso vitalício</div>
+                <div class="price-note">Menos de R$ 0,04 por dia de leitura guiada</div>
+            </div>
+            
+            <!-- ✅ LINK DA EDUZZ ADICIONADO AQUI -->
+            <a href="https://chk.eduzz.com/Q9N5KE7B01" class="btn btn-accent" id="kiwify-checkout" target="_blank">
+                SIM, QUERO MEU CRONOGRAMA AGORA!
+            </a>
+            <!-- ✅ FIM DA ALTERAÇÃO -->
+            
+            <div class="guarantee">
+                <i class="fas fa-shield-alt"></i>
+                <span>Garantia de 7 dias: Se não gostar, devolvemos 100% do seu dinheiro</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-bible"></i>
+                LeituraBíblica365
+            </div>
+            <div class="footer-links">
+                <a href="https://sualoja.kiwify.com.br/termos" target="_blank">Termos de Uso</a>
+                <a href="https://sualoja.kiwify.com.br/privacidade" target="_blank">Política de Privacidade</a>
+                <a href="mailto:seuemail@dominio.com">Contato</a>
+            </div>
+            <p class="copyright">© 2024 LeituraBíblica365 - Cronograma para Leitura Completa da Bíblia em 1 Ano. Todos os direitos reservados.</p>
+            <p class="copyright">Este produto é um guia prático independente para estudo bíblico pessoal.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '15px 0';
+            } else {
+                header.style.backgroundColor = 'transparent';
+                header.style.boxShadow = 'none';
+                header.style.padding = '30px 0';
+            }
+        });
+        
+        // Initialize header background
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>

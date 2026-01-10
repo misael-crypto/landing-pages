@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma Guia Prático - Leitura da Bíblia em 1 Ano</title>
+    <title>Devocional Diário | Encontre paz e propósito</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c62828;
-            --primary-dark: #8e0000;
-            --primary-light: #ff5f52;
-            --accent: #ffd700;
-            --accent-dark: #b29700;
-            --dark: #1a1a1a;
-            --light: #f8f8f8;
-            --gray: #5a5a5a;
-            --gray-light: #e0e0e0;
+            --primary-color: #2c6e49;
+            --primary-dark: #1a472a;
+            --primary-light: #4c956c;
+            --secondary-color: #fefee3;
+            --accent-color: #ffc9b9;
+            --text-dark: #2f2f2f;
+            --text-light: #5a5a5a;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(198, 40, 40, 0.15);
-            --shadow-heavy: 0 15px 40px rgba(198, 40, 40, 0.25);
+            --border-radius: 10px;
         }
         
         * {
@@ -30,460 +30,488 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            overflow-x: hidden;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
         }
         
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Merriweather', serif;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
             margin-bottom: 1rem;
         }
         
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        section {
-            padding: 80px 0;
-        }
-        
         .btn {
             display: inline-block;
-            padding: 16px 40px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 18px;
-            transition: var(--transition);
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
             border: none;
             cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
             text-align: center;
-            box-shadow: var(--shadow);
         }
         
         .btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
         
-        .btn-accent {
-            background-color: var(--accent);
-            color: var(--dark);
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
         }
         
-        .btn-accent:hover {
-            background-color: var(--accent-dark);
+        .btn-secondary:hover {
+            background-color: rgba(44, 110, 73, 0.1);
         }
         
-        /* Header */
+        /* Header & Navigation */
         header {
-            padding: 30px 0;
-            position: relative;
-            z-index: 100;
-            transition: var(--transition);
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
-        .header-content {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
         
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
             display: flex;
             align-items: center;
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
         }
         
         .logo i {
             margin-right: 10px;
-            color: var(--accent);
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .current-page {
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .current-page::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            padding: 60px 0;
-            position: relative;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(198, 40, 40, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(44, 110, 73, 0.9), rgba(26, 71, 42, 0.9)), url('https://images.unsplash.com/photo-1518834103327-0d18a8a8d479?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
         }
         
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .hero-text h1 {
-            font-size: 48px;
-            color: var(--dark);
-            margin-bottom: 20px;
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
         }
         
-        .hero-text h1 span {
-            color: var(--primary);
-        }
-        
-        .hero-text p {
-            font-size: 20px;
-            color: var(--gray);
-            margin-bottom: 30px;
-        }
-        
-        .hero-image {
-            position: relative;
-            text-align: center;
-        }
-        
-        .pdf-mockup {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-heavy);
-            transition: var(--transition);
-        }
-        
-        .pdf-mockup:hover {
-            transform: translateY(-10px);
-        }
-        
-        .urgency-badge {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
-        }
-        
-        /* Benefits Section */
-        .benefits {
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background-color: var(--primary);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-        
-        .benefit-item {
-            text-align: center;
-            padding: 30px;
-            border-radius: 12px;
-            background-color: #fff;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-        
-        .benefit-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-        }
-        
-        .benefit-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .benefit-item h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        
-        /* Methodology Section */
-        .methodology {
-            background-color: #f9f9f9;
-        }
-        
-        .methodology-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .methodology-image {
-            text-align: center;
-        }
-        
-        .methodology-image img {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-        
-        .methodology-list {
-            list-style: none;
-        }
-        
-        .methodology-list li {
-            margin-bottom: 25px;
-            padding-left: 35px;
-            position: relative;
-        }
-        
-        .methodology-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .time-commitment {
-            background-color: var(--primary);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .time-commitment h3 {
-            color: white;
-            margin-bottom: 10px;
-        }
-        
-        .time-commitment .time {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        /* Objections Section */
-        .objections {
-            background-color: white;
-        }
-        
-        .objections-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .objection-item {
-            margin-bottom: 30px;
-            padding: 25px;
-            background-color: #f9f9f9;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary);
-        }
-        
-        .objection-item h3 {
-            font-size: 20px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        /* CTA Section */
-        .cta {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-        }
-        
-        .cta h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
         
-        .price {
-            margin-bottom: 40px;
+        /* Instructions Section */
+        .instructions {
+            padding: 80px 0;
+            background-color: var(--white);
         }
         
-        .original-price {
-            font-size: 24px;
-            text-decoration: line-through;
-            opacity: 0.7;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
         
-        .current-price {
-            font-size: 52px;
-            font-weight: 800;
-            color: var(--accent);
-            margin: 0 15px;
+        .section-header p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-        .price-note {
-            font-size: 18px;
-            margin-top: 10px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .guarantee {
-            margin-top: 40px;
-            font-size: 18px;
+        .steps-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
+            gap: 30px;
         }
         
-        .guarantee i {
-            color: var(--accent);
+        .step {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Devotional Section */
+        .devotional-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .devotional-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .devotional-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .devotional-header h2 {
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .devotional-content {
+            padding: 40px;
+        }
+        
+        .verse-container {
+            background-color: rgba(44, 110, 73, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .verse {
+            font-size: 1.4rem;
+            font-family: 'Merriweather', serif;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .verse-reference {
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-align: right;
+        }
+        
+        .content-section {
+            margin-bottom: 35px;
+        }
+        
+        .content-section h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .content-section h3 i {
             margin-right: 10px;
-            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .reflection-question {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--primary-dark);
+            color: var(--white);
             padding: 60px 0 30px;
-            text-align: center;
         }
         
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .footer-links {
+        .footer-content {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             transition: var(--transition);
         }
         
-        .footer-links a:hover {
-            color: var(--accent);
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
         }
         
         .copyright {
-            color: #999;
-            font-size: 14px;
-            margin-top: 30px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
         
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-content, .objections-content, .methodology-content {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
+            h2 {
+                font-size: 1.8rem;
             }
             
-            .hero-text h1 {
-                font-size: 40px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
         }
         
         @media (max-width: 768px) {
-            .benefits-grid {
-                grid-template-columns: 1fr;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .hero-text h1 {
-                font-size: 36px;
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
             }
             
-            .footer-links {
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .steps-container {
+                flex-direction: column;
+            }
+            
+            .devotional-content {
+                padding: 30px 20px;
+            }
+            
+            .verse {
+                font-size: 1.2rem;
+            }
+            
+            .navigation-buttons {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .cta h2 {
-                font-size: 36px;
+            .navigation-buttons button {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
             }
             
-            .current-price {
-                font-size: 42px;
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .instructions, .devotional-section {
+                padding: 60px 0;
+            }
+            
+            .step, .devotional-card {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header & Navigation -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-bible"></i>
-                    LeituraBíblica365
-                </div>
-                <div class="header-cta">
-                    <a id="headerBtn" class="btn btn-accent" href="https://chk.eduzz.com/Q9N5KE7B01" target="_blank">
-                        Garantir Meu Cronograma
-                    </a>
-                </div>
-            </div>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cross"></i>
+                Devocional Diário
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="current-page">Início</a></li>
+                    <li><a href="#devotional">Devocional do Dia</a></li>
+                    <li><a href="#instructions">Como Usar</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -491,166 +519,99 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Leia a <span>Bíblia Completa em 1 Ano</span> com um Método Sequencial e Estruturado</h1>
-                    <p>Finalmente complete sua jornada bíblica do Gênesis ao Apocalipse com nosso cronograma guia prático. Um PDF meticulosamente organizado que elimina a confusão e transforma sua leitura em uma experiência espiritual profunda e consistente.</p>
-                    <a id="heroBtn" class="btn" href="https://chk.eduzz.com/Q9N5KE7B01" target="_blank">
-                        Quero Meu Cronograma Agora
-                    </a>
-                    <div class="urgency-badge">
-                        <i class="fas fa-clock"></i> Mais de 500 cópias vendidas
+                <h1>Encontre paz e propósito para o seu dia</h1>
+                <p>Um devocional diário projetado para conectar você com a Palavra de Deus de maneira significativa e prática. Comece seu dia com inspiração e reflexão.</p>
+                <a href="#devotional" class="btn">Ver Devocional de Hoje</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section class="instructions" id="instructions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como Usar Este Devocional</h2>
+                <p>Siga estas orientações simples para aproveitar ao máximo sua experiência de devocional diário</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-book-open"></i>
                     </div>
+                    <h3>Leia com Atenção</h3>
+                    <p>Encontre um momento tranquilo para ler o versículo do dia. Leia mais de uma vez, deixando que as palavras penetrem em seu coração.</p>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="PDF Cronograma Leitura Bíblia" class="pdf-mockup">
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-meditate"></i>
+                    </div>
+                    <h3>Reflita no Significado</h3>
+                    <p>Considere como a mensagem do versículo se aplica à sua vida atual. Use a reflexão fornecida como ponto de partida para seu pensamento.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-praying-hands"></i>
+                    </div>
+                    <h3>Ore com Sinceridade</h3>
+                    <p>Use a oração sugerida como guia, mas sinta-se livre para expressar seus próprios pensamentos e sentimentos a Deus.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Aplique no Dia a Dia</h3>
+                    <p>Pense em uma ação prática que você pode tomar hoje, baseada no que aprendeu. A pergunta reflexiva irá ajudá-lo nesse processo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
+    <!-- Devotional Section -->
+    <section class="devotional-section" id="devotional">
         <div class="container">
-            <div class="section-title">
-                <h2>O Que Você Vai Conseguir</h2>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Cronograma Sequencial</h3>
-                    <p>Leia a Bíblia em ordem cronológica, do Gênesis ao Apocalipse, seguindo uma sequência lógica que facilita o entendimento do contexto histórico.</p>
+            <div class="devotional-card">
+                <div class="devotional-header">
+                    <h2>Devocional do Dia</h2>
+                    <p class="date" id="currentDate">Carregando data...</p>
                 </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-hourglass-half"></i>
+                
+                <div class="devotional-content">
+                    <div class="verse-container">
+                        <p class="verse" id="dailyVerse">"Porque sou eu que conheço os planos que tenho para vocês", diz o Senhor, "planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro."</p>
+                        <p class="verse-reference" id="verseReference">Jeremias 29:11</p>
                     </div>
-                    <h3>Tempo Realista</h3>
-                    <p>Leituras diárias de aproximadamente 35 minutos - tempo suficiente para uma imersão espiritual significativa mas que cabe na sua rotina.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Acompanhamento de Progresso</h3>
-                    <p>Marcadores visuais para acompanhar seu progresso e manter a motivação durante todo o ano, vendo claramente sua evolução.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Abordagem Completa</h3>
-                    <p>Não pule nenhum livro da Bíblia. Leia cada capítulo e versículo, garantindo uma compreensão integral das Escrituras Sagradas.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-pray"></i>
-                    </div>
-                    <h3>Disciplina Espiritual</h3>
-                    <p>Desenvolva o hábito diário de leitura bíblica que transformará sua vida espiritual e seu relacionamento com Deus.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>Acesso Imediato e Vitalício</h3>
-                    <p>PDF otimizado para qualquer dispositivo. Baixe agora e tenha acesso para sempre - use quantas vezes quiser.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Methodology Section -->
-    <section class="methodology">
-        <div class="container">
-            <div class="section-title">
-                <h2>Metodologia Comprovada</h2>
-            </div>
-            <div class="methodology-content">
-                <div class="methodology-text">
-                    <h3>Por que nosso método sequencial funciona melhor?</h3>
-                    <p>Diferente de planos que misturam leituras desconexas, nosso cronograma segue uma ordem lógica que permite:</p>
                     
-                    <ul class="methodology-list">
-                        <li><strong>Compreensão do contexto histórico</strong> - Entenda a história da salvação de forma linear</li>
-                        <li><strong>Conectar os pontos</strong> - Veja como cada livro se relaciona com os próximos</li>
-                        <li><strong>Evitar confusão</strong> - Não pule entre testamento antigo e novo desnecessariamente</li>
-                        <li><strong>Imersão profunda</strong> - Mantenha o foco em uma narrativa contínua</li>
-                        <li><strong>Consistência</strong> - Desenvolva um hábito sólido com um plano claro</li>
-                    </ul>
+                    <div class="content-section">
+                        <h3><i class="fas fa-lightbulb"></i> Reflexão & Aplicação</h3>
+                        <p id="reflectionText">Este versículo nos lembra que Deus tem um propósito específico para cada um de nós. Mesmo quando enfrentamos desafios ou quando o futuro parece incerto, podemos confiar que o Senhor está no controle e tem planos para o nosso bem. A promessa de Deus não é de uma vida sem dificuldades, mas de uma esperança que transcende as circunstâncias atuais.</p>
+                        <p id="applicationText"><strong>Aplicação prática:</strong> Hoje, ao enfrentar decisões ou incertezas, lembre-se de que Deus está guiando seus passos. Em vez de se preocupar com o amanhã, confie no cuidado divino e busque discernimento através da oração. Que tal anotar uma área da sua vida onde você precisa exercitar mais confiança em Deus?</p>
+                    </div>
                     
-                    <div class="time-commitment">
-                        <h3>Tempo Diário Recomendado</h3>
-                        <span class="time">35 minutos</span>
-                        <p>Tempo suficiente para uma leitura contemplativa e reflexiva, permitindo que a Palavra realmente entre no seu coração.</p>
+                    <div class="content-section">
+                        <h3><i class="fas fa-pray"></i> Oração do Dia</h3>
+                        <p id="prayerText">Pai celestial, obrigado por lembrar-me hoje que os Teus planos para mim são bons. Ajuda-me a confiar no Teu cuidado, mesmo quando não compreendo completamente o caminho à frente. Concede-me paz no coração e sabedoria para as decisões deste dia. Que eu possa viver com a esperança do futuro que preparaste para mim. Em nome de Jesus, amém.</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-question-circle"></i> Pergunta para Reflexão</h3>
+                        <div class="reflection-question">
+                            <p id="questionText">Em qual área da sua vida você precisa confiar mais nos planos de Deus, em vez de depender apenas dos seus próprios entendimentos?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn btn-secondary" id="prevBtn">
+                            <i class="fas fa-arrow-left"></i> Devocional Anterior
+                        </button>
+                        <button class="btn btn-secondary" id="nextBtn">
+                            Próximo Devocional <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="methodology-image">
-                    <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Leitura da Bíblia">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Objections Section -->
-    <section class="objections">
-        <div class="container">
-            <div class="section-title">
-                <h2>Quebrando Objeções</h2>
-            </div>
-            <div class="objections-content">
-                <div class="objections-text">
-                    <div class="objection-item">
-                        <h3>"35 minutos é muito tempo"</h3>
-                        <p>É menos que um episódio de série na Netflix! E o retorno é eterno. Separe esse tempo sagrado para Deus - Ele merece mais que isso.</p>
-                    </div>
-                    <div class="objection-item">
-                        <h3>"Já tentei e desisti no meio"</h3>
-                        <p>Com nosso cronograma visual e acompanhamento claro, você verá seu progresso diariamente. A sensação de avançar capítulo a capítulo é motivadora!</p>
-                    </div>
-                    <div class="objection-item">
-                        <h3>"Leitura sequencial é monótona"</h3>
-                        <p>Pelo contrário! Seguir a história da salvação de forma linear é uma experiência emocionante. É como ler um grande épico divino.</p>
-                    </div>
-                </div>
-                <div class="objections-text">
-                    <div class="objection-item">
-                        <h3>"Posso criar meu próprio plano"</h3>
-                        <p>Pode, mas vai gastar horas planejando. Nós já fizemos o trabalho pesado por você. Por apenas R$ 12,90, você ganha um plano testado e aprovado.</p>
-                    </div>
-                    <div class="objection-item">
-                        <h3>"É só um PDF, não vale o preço"</h3>
-                        <p>Vale cada centavo! Um café gourmet custa mais que isso. Este guia pode transformar sua vida espiritual - isso não tem preço.</p>
-                    </div>
-                    <div class="objection-item">
-                        <h3>"E se eu não gostar?"</h3>
-                        <p>Temos garantia de 7 dias. Se não gostar, devolvemos seu dinheiro. Você não tem nada a perder e uma vida espiritual transformada a ganhar.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="cta">
-        <div class="container">
-            <h2>Transforme Sua Vida Espiritual em 2024</h2>
-            <p>Adquira agora o Cronograma Guia Prático para Leitura Completa da Bíblia em 1 Ano e comece sua jornada de transformação espiritual hoje mesmo.</p>
-            
-            <div class="price">
-                <span class="current-price">R$ 12,90</span>
-                <div class="price-note">Apenas uma vez - acesso vitalício</div>
-                <div class="price-note">Menos de R$ 0,04 por dia de leitura guiada</div>
-            </div>
-            
-            <a id="mainBtn" class="btn btn-accent" href="https://chk.eduzz.com/Q9N5KE7B01" target="_blank">
-                SIM, QUERO MEU CRONOGRAMA AGORA!
-            </a>
-            
-            <div class="guarantee">
-                <i class="fas fa-shield-alt"></i>
-                <span>Garantia de 7 dias: Se não gostar, devolvemos 100% do seu dinheiro</span>
             </div>
         </div>
     </section>
@@ -658,94 +619,186 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">
-                <i class="fas fa-bible"></i>
-                LeituraBíblica365
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Devocional Diário</h3>
+                    <p>Um espaço digital para nutrir sua fé e encontrar direção para o dia a dia através da Palavra de Deus.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <p><a href="#">Devocionais Anteriores</a></p>
+                    <p><a href="#">Plano de Leitura Bíblica</a></p>
+                    <p><a href="#">Orações Guiadas</a></p>
+                    <p><a href="#">Artigos de Fé</a></p>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="https://sualoja.kiwify.com.br/termos" target="_blank">Termos de Uso</a>
-                <a href="https://sualoja.kiwify.com.br/privacidade" target="_blank">Política de Privacidade</a>
-                <a href="mailto:seuemail@dominio.com">Contato</a>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Devocional Diário. Todos os direitos reservados.</p>
+                <p>Desenvolvido com <i class="fas fa-heart" style="color: #ff6b6b;"></i> para a comunidade cristã.</p>
             </div>
-            <p class="copyright">© 2024 LeituraBíblica365 - Cronograma para Leitura Completa da Bíblia em 1 Ano. Todos os direitos reservados.</p>
-            <p class="copyright">Este produto é um guia prático independente para estudo bíblico pessoal.</p>
         </div>
     </footer>
 
-    <!-- ✅ SCRIPT CORRETO PARA RASTREAMENTO DE AFILIADOS -->
     <script>
-        // Espera a página carregar completamente
-        document.addEventListener("DOMContentLoaded", function () {
-            // Captura parâmetros da URL
-            const params = new URLSearchParams(window.location.search);
-            const afiliado = params.get("a") || params.get("ref") || params.get("afiliado") || params.get("aff");
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Set current date
+        const currentDateElement = document.getElementById('currentDate');
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        currentDateElement.textContent = now.toLocaleDateString('pt-BR', options);
+        
+        // Devotional data - 7 days complete
+        const devotionals = [
+            {
+                title: "Dia 1 - Planos de Esperança",
+                verse: '"Porque sou eu que conheço os planos que tenho para vocês", diz o Senhor, "planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro."',
+                reference: "Jeremias 29:11",
+                reflection: "Este versículo nos lembra que Deus tem um propósito específico para cada um de nós. Mesmo quando enfrentamos desafios ou quando o futuro parece incerto, podemos confiar que o Senhor está no controle e tem planos para o nosso bem. A promessa de Deus não é de uma vida sem dificuldades, mas de uma esperança que transcende as circunstâncias atuais.",
+                application: "Hoje, ao enfrentar decisões ou incertezas, lembre-se de que Deus está guiando seus passos. Em vez de se preocupar com o amanhã, confie no cuidado divino e busque discernimento através da oração. Que tal anotar uma área da sua vida onde você precisa exercitar mais confiança em Deus?",
+                prayer: "Pai celestial, obrigado por lembrar-me hoje que os Teus planos para mim são bons. Ajuda-me a confiar no Teu cuidado, mesmo quando não compreendo completamente o caminho à frente. Concede-me paz no coração e sabedoria para as decisões deste dia. Que eu possa viver com a esperança do futuro que preparaste para mim. Em nome de Jesus, amém.",
+                question: "Em qual área da sua vida você precisa confiar mais nos planos de Deus, em vez de depender apenas dos seus próprios entendimentos?"
+            },
+            {
+                title: "Dia 2 - Entrega Total",
+                verse: '"Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará."',
+                reference: "Salmos 37:5",
+                reflection: "Este salmo nos convida a uma entrega total a Deus. Não se trata apenas de pedir ajuda em momentos específicos, mas de confiar continuamente que Ele está no controle. Quando realmente entregamos nossos planos e preocupações a Deus, Ele age de maneiras que vão além da nossa compreensão.",
+                application: "Identifique uma preocupação específica que você tem carregado e conscientemente entregue-a a Deus hoje. Escreva em um papel e simbolicamente coloque-o em uma caixa ou envelope como forma de representar sua entrega.",
+                prayer: "Senhor, hoje eu escolho entregar meus caminhos a Ti. Toma o controle das minhas preocupações, sonhos e planos. Ajuda-me a confiar que Tu trabalharás em todas as coisas para o meu bem. Afasta de mim a ansiedade e substitua-a pela paz que vem da confiança em Ti. Em nome de Jesus, amém.",
+                question: "Qual preocupação você precisa entregar completamente a Deus hoje?"
+            },
+            {
+                title: "Dia 3 - Sem Ansiedade",
+                verse: '"Não andem ansiosos por coisa alguma, mas em tudo, pela oração e súplicas, e com ação de graças, apresentem seus pedidos a Deus."',
+                reference: "Filipenses 4:6",
+                reflection: "A ansiedade é uma resposta natural às incertezas da vida, mas Paulo nos orienta a substituí-la pela oração. A chave está em levar tudo a Deus - não apenas as grandes crises, mas também as pequenas preocupações do dia a dia. A ação de graças é um antídoto poderoso contra a ansiedade.",
+                application: "Crie o hábito de transformar preocupações em orações. Sempre que sentir ansiedade surgindo, pare por um momento para orar sobre aquela situação específica, terminando com agradecimento por algo positivo em sua vida.",
+                prayer: "Deus de paz, reconheço que muitas vezes permito que a ansiedade tome conta do meu coração. Ensina-me a levar cada preocupação a Ti em oração. Ajuda-me a cultivar um coração grato, lembrando de Tuas fidelidades passadas. Concede-me a Tua paz que excede todo entendimento. Em nome de Jesus, amém.",
+                question: "Que situação atual está causando ansiedade em você e como pode transformá-la em uma oportunidade de oração?"
+            },
+            {
+                title: "Dia 4 - Deus não desistiu de você",
+                verse: '"O Senhor é misericordioso e compassivo, longânimo e grande em amor."',
+                reference: "Salmos 103:8",
+                reflection: "Mesmo quando você se afastou, Deus permaneceu o mesmo. Ele não mudou de ideia sobre você. A frieza espiritual muitas vezes vem acompanhada de culpa, mas a Bíblia mostra que o caráter de Deus é misericórdia, não rejeição.",
+                application: "Hoje, rejeite o pensamento de que 'já passou do ponto'. Fale com Deus exatamente como você está, sem tentar parecer forte ou espiritual.",
+                prayer: "Pai de amor, ajuda-me a acreditar hoje na Tua misericórdia inesgotável. Mesmo quando eu falho, Tu permaneces fiel. Ensina-me a aceitar o Teu perdão e a não carregar culpas que Jesus já levou na cruz. Restaura em mim a certeza do Teu amor incondicional. Em nome de Jesus, amém.",
+                question: "O que tem te feito acreditar que Deus desistiu de você?"
+            },
+            {
+                title: "Dia 5 - Um passo de cada vez",
+                verse: '"O Senhor firma os passos de um homem quando a conduta deste o agrada."',
+                reference: "Salmos 37:23",
+                reflection: "Deus não espera uma transformação instantânea. Ele trabalha em processos. Um pequeno passo em direção a Ele já é suficiente para que Ele comece a agir novamente na sua vida.",
+                application: "Hoje, dê apenas um passo simples: uma oração curta, um agradecimento ou um momento de silêncio com Deus.",
+                prayer: "Senhor, reconheço que não preciso ter tudo resolvido para me aproximar de Ti. Aceita este pequeno passo que dou hoje. Guia meus passos, um de cada vez, e firma o meu caminho conforme a Tua vontade. Em nome de Jesus, amém.",
+                question: "Qual pequeno passo você pode dar hoje, sem pressão?"
+            },
+            {
+                title: "Dia 6 - Deus fala no silêncio",
+                verse: '"Aquietai-vos e sabei que eu sou Deus."',
+                reference: "Salmos 46:10",
+                reflection: "Às vezes a frieza não é ausência de Deus, mas excesso de barulho. Quando tudo fica acelerado demais, fica difícil perceber a presença d'Ele. Deus também fala quando tudo está quieto.",
+                application: "Separe 2 minutos de silêncio, sem celular, sem música. Apenas respire e reconheça que Deus está presente.",
+                prayer: "Deus do silêncio, ensina-me a aquietar meu coração em meio ao barulho do mundo. Ajuda-me a ouvir Tua voz suave e a encontrar-Te nos momentos de quietude. Em nome de Jesus, amém.",
+                question: "O que mais tem roubado seu silêncio ultimamente?"
+            },
+            {
+                title: "Dia 7 - Um novo começo é possível",
+                verse: '"As misericórdias do Senhor se renovam a cada manhã."',
+                reference: "Lamentações 3:22-23",
+                reflection: "O recomeço não é um evento distante — ele acontece todos os dias. Deus oferece novas oportunidades continuamente. O passado não define sua caminhada com Ele a partir de agora.",
+                application: "Hoje, encare este momento como um novo ponto de partida, sem olhar para trás com culpa, mas para frente com esperança.",
+                prayer: "Deus das novas misericórdias, obrigado por este novo dia que é uma nova oportunidade. Limpa o meu passado com Teu perdão e me dá olhos para ver o futuro que preparaste. Em nome de Jesus, amém.",
+                question: "O que você quer reconstruir na sua vida espiritual a partir de hoje?"
+            }
+        ];
+        
+        let currentDevotionalIndex = 0;
+        
+        // Update devotional content
+        function updateDevotionalContent(index) {
+            const devotional = devotionals[index];
+            document.getElementById('dailyVerse').textContent = devotional.verse;
+            document.getElementById('verseReference').textContent = devotional.reference;
+            document.getElementById('reflectionText').textContent = devotional.reflection;
+            document.getElementById('applicationText').innerHTML = `<strong>Aplicação prática:</strong> ${devotional.application}`;
+            document.getElementById('prayerText').textContent = devotional.prayer;
+            document.getElementById('questionText').textContent = devotional.question;
             
-            // URL base do checkout da Eduzz
-            const checkoutBase = "https://chk.eduzz.com/Q9N5KE7B01";
+            // Update button states
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === devotionals.length - 1;
             
-            // Atualiza todos os botões de compra
-            const buttons = ["headerBtn", "heroBtn", "mainBtn"];
-            
-            buttons.forEach(buttonId => {
-                const botao = document.getElementById(buttonId);
-                if (botao) {
-                    if (afiliado) {
-                        // Adiciona o código do afiliado ao link
-                        botao.href = checkoutBase + "?a=" + encodeURIComponent(afiliado);
-                        console.log(`Botão ${buttonId} configurado para afiliado: ${afiliado}`);
-                    } else {
-                        // Mantém o link padrão
-                        botao.href = checkoutBase;
-                    }
-                }
-            });
-            
-            // Verifica se há um afiliado na URL
-            if (afiliado) {
-                console.log("✅ Afiliado detectado:", afiliado);
-                console.log("✅ Link do checkout:", checkoutBase + "?a=" + encodeURIComponent(afiliado));
-            } else {
-                console.log("✅ Nenhum afiliado detectado, usando link padrão");
+            // Update devotional title in header
+            document.querySelector('.devotional-header h2').textContent = devotional.title;
+        }
+        
+        // Previous button
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentDevotionalIndex > 0) {
+                currentDevotionalIndex--;
+                updateDevotionalContent(currentDevotionalIndex);
             }
         });
-    </script>
-    
-    <!-- Script para efeitos visuais -->
-    <script>
-        // Smooth scrolling for anchor links
+        
+        // Next button
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentDevotionalIndex < devotionals.length - 1) {
+                currentDevotionalIndex++;
+                updateDevotionalContent(currentDevotionalIndex);
+            }
+        });
+        
+        // Initialize with first devotional
+        updateDevotionalContent(currentDevotionalIndex);
+        
+        // Set initial devotional based on day of week (optional)
+        const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+        if (dayOfWeek > 0 && dayOfWeek <= devotionals.length) {
+            currentDevotionalIndex = dayOfWeek - 1;
+            updateDevotionalContent(currentDevotionalIndex);
+        }
+        
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             });
         });
-        
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                header.style.padding = '15px 0';
-            } else {
-                header.style.backgroundColor = 'transparent';
-                header.style.boxShadow = 'none';
-                header.style.padding = '30px 0';
-            }
-        });
-        
-        // Initialize header background
-        window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
 </html>
